@@ -1,0 +1,12 @@
+<button type="button" class="btn btn-primary" (click)="add()">Create New Employee</button>
+
+<app-table
+  [headers]="tableHeaders"
+  [keysOrdered]="keysOrdered"
+  [data]="employees"
+  [indexes]="true"
+  [actionButtons]="true"
+  (editClicked)="edit($event)"
+  (deleteClicked)="delete($event)"
+>
+</app-table>

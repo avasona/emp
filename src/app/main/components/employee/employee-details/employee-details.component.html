@@ -1,0 +1,72 @@
+<div *ngIf="employeeLoaded">
+  <form [formGroup]="form">
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">First Name: </label>
+      <input
+        formControlName="firstName"
+        type="email"
+        class=" col-sm-4 form-control"
+        [ngClass]="{ 'is-invalid': formSubmitted && controls.firstName.errors}"
+      >
+      <div *ngIf="formSubmitted && controls.firstName.errors " class="invalid-feedback offset-md-2">
+          <div *ngIf="controls.firstName.errors.required">
+            {{controls.firstName.errors.required.message}}
+          </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Last Name: </label>
+      <input formControlName="lastName" type="text" class=" col-sm-4 form-control">
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Email: </label>
+      <input
+        formControlName="email"
+        type="email"
+        class="col-sm-4 form-control"
+        [ngClass]="{ 'is-invalid': formSubmitted && controls.email.errors}"
+      >
+      <div *ngIf="formSubmitted && controls.email.errors " class="invalid-feedback offset-md-2">
+          <div *ngIf="controls.email.errors.email">
+            {{controls.email.errors.email.message}}
+          </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Age: </label>
+      <input
+        formControlName="age"
+        type="number" class="col-sm-4 form-control"
+        [ngClass]="{ 'is-invalid': formSubmitted && controls.age.errors}"
+        [ngClass]="{ 'is-invalid': formSubmitted && controls.age.errors}"
+      >
+      <div *ngIf="formSubmitted && controls.age.errors " class="invalid-feedback offset-md-2">
+        <div *ngIf="controls.age.errors.min">
+          {{controls.age.errors.min.message}}
+        </div>
+        <div *ngIf="controls.age.errors.max">
+          {{controls.age.errors.max.message}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Phone Number: </label>
+      <input
+        formControlName="phone"
+        type="text"
+        class="col-sm-4 form-control"
+        [ngClass]="{ 'is-invalid': formSubmitted && controls.phone.errors}"
+      >
+      <div *ngIf="formSubmitted && controls.phone.errors " class="invalid-feedback offset-md-2">
+          <div *ngIf="controls.phone.errors.pattern">
+            {{controls.phone.errors.pattern.message}}
+          </div>
+          <small class="form-text text-muted">Phone number format must be +374 and 8 digits</small>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+  </form>
+</div>

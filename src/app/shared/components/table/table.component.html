@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" *ngIf="indexes">#</th>
+      <th scope="col" *ngFor="let header of headers">{{header | uppercase}}</th>
+      <th scope="col" *ngIf="actionButtons"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of data; let i=index">
+      <th scope="row">{{i+1}}</th>
+      <td *ngFor="let key of keysOrdered">{{d[key]}}</td>
+      <td *ngIf="actionButtons">
+        <button type="button" class="btn btn-secondary edit-button" (click)="editButtonClicked(d['id'])">Edit</button>
+        <button type="button" class="btn btn-secondary" (click)="deleteButtonClicked(d['id'])">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
